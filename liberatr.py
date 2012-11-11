@@ -1,18 +1,13 @@
 import win32com.client
-#import eyed3
 import logging
 from pprint import pprint
 import json
 from datetime import datetime
-#import timeit
-#from mutagen.mp3 import MP3
 from mutagen.id3 import ID3, POPM
-#from mutagen.easyid3 import EasyID3
 import argparse
 
 
 # init 
-
 
 itunes = win32com.client.Dispatch("iTunes.Application")
 mainLibrary = itunes.LibraryPlaylist
@@ -33,46 +28,6 @@ def walkThroughItunesLib():
 			print(track.Artist, track.Name)
 			print(track.Rating, popFrames)
 			#print(popFrames[0].email)
-			
-def testLibs():
-	
-	#track = libraryTracks.ItemByPersistentID(1317396620,-33136939) # Perfect Circle - Judith v 2.3.0
-	#track = libraryTracks.ItemByPersistentID(660927261,1657575963) # Celentano v 2.4.0
-	track = libraryTracks.ItemByPersistentID(1371381314,1577795262) # Coulton v 2.4.0
-	#print(track.Artist, track.Name, track.Album, track.Location)
-	
-	# iTunes
-	#print(track.Comment)
-	#track.Comment = 'test'
-	#sprint(track.Comment)
-	
-	# eyeD3
-	#trackFile = eyed3.load(track.Location)
-	#print(trackFile.tag.artist)
-	#pprint(type(str(trackFile.tag.version)))
-	#tag = eyed3.Tag()
-	#tag.link(track.Location)
-	
-	# Mutagen
-	
-	#trackFile = MP3(track.Location)
-	#trackID3 = ID3(track.Location)
-	trackID3 = ID3(u"E:\\00_audio\\Adriano Celentano\\Super Best\\20 Susanna.mp3")
-	
-	#print(trackFile.info.length, trackFile.info.bitrate)
-	#print(dir(trackFile))
-	#trackID3.pprint()
-	#pprint(trackID3)
-	#trackFile.pprint()
-	#pprint(trackFile)
-	#print EasyID3.valid_keys.keys()
-	#print(trackID3.version, __name__)
-	#pprint(trackID3)
-	#trackID3.add(POPM(email="test@foo.com", rating=222, count=12))
-	#trackID3.save()
-	#pprint(trackID3)
-	#trackID3.delall('POPM')
-	print(trackID3.getall('POPM'))
 
 def saveAllItunesRatingsToPOPM():
 
